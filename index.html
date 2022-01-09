@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Your task</title>
+</head>
+<body>
+    <div class="background-img">
+        <div class="fadein">
+            <img src="./assets/img/background/leaves.jpg" />
+            <div class="gradient-background" style="opacity:0"></div>
+        </div>
+    </div>
+    <main>
+        <section class="card-wrapper">
+            <div class="menu-wrap">
+                <span id="menuBtn">
+                    <img src="/assets/img/icons/menu.png" alt="" srcset="">
+                </span>
+                <div class="menu">
+                    <div class="left-section">
+                        <ul class="menu-list">
+                            <li>
+                                <div class="menu-item" data-tab-target="#theme">
+                                    <span  class="iconMenu"> <img src="/assets/img/icons/gallery.png" alt=""></span>
+                                    Themes
+                                </div>
+                            </li>                             
+                            <li>
+                                <div class="menu-item" data-tab-target="#sounds">
+                                    <span class="iconMenu"> <img src="/assets/img/icons/sound.png" alt=""></span>
+                                    Sounds
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item" data-tab-target="#radio">
+                                    <span class="iconMenu"> <img src="/assets/img/icons/radio.png" alt=""></span>
+                                    Radio
+                                </div>
+                            </li>                        
+                        </ul>
+                    </div>
+                    <div class="right-section">
+                        <section class="active" data-tab-content id="theme" >
+                            <div class="wrapper-el">
+                                <h2>Select theme</h2>
+                                <h4>Static wallpapers</h2>
+                                <div id="staticContainer" class="theme-container">                            
+                                </div>
+                                <h4>Live wallpapers</h2>
+                                <div id="liveContainer" class="theme-container">
+                                </div>
+                            </div>
+                        </section>
+                        <section  data-tab-content id="sounds">
+                            <div class="wrapper-el">
+                                <h2>Sounds</h2>
+                                <div class="tag-selector-section">
+                                    <ul>
+                                        <li>All</li>
+                                        <li id="focus-mood" id-mood-tag="1">Focus</li>
+                                        <li id-mood-tag="1">Relax</li>
+                                    </ul>
+                                </div>
+                                <div class="sound-container">
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card">
+                    <h3 class="figure" id="totalTasks">
+                        0
+                    </h3>
+                    <h3 class="name">
+                        today
+                    </h3>
+                </div>
+                <div class="card">
+                    <h3 class="figure" id="completedTasks">
+                        0
+                    </h3>
+                    <h3 class="name">
+                        Completed
+                    </h3>
+                </div>
+                <div class="card">
+                    <h3 class="figure" id="accumulatedTime">
+                        0:00
+                    </h3>
+                    <h3 class="name">
+                        Time
+                    </h3>
+                </div>
+                <div class="card">
+                    <h3 class="figure" id="sessions">
+                        0
+                    </h3>
+                    <h3 class="name">
+                        Sessions
+                    </h3>
+                </div>
+                <div class="card">
+                    <h3 class="figure">
+                        <span class="icon">
+                            <img src="/assets/img/weather/rainy.png" alt="">
+                        </span>
+                        10&deg;c
+                    </h3>
+                    <h3 class="name">
+                        Pending
+                    </h3>
+                </div>
+            </div>
+        </section>
+        <section class="main-section">
+            <div class="clock-container active">
+                <div class="button-container col-5">
+                    <ul>
+                        <li>Timer <span id="pomodoro-config"><img src="assets/img/icons/config.png" alt="" srcset=""></span></li>
+                    </ul>
+                </div>
+                <div class="current-task">
+                    <div class="cron-icon">
+                        <img src="/assets/img/icons/timer.png" alt="">
+                    </div>
+                    <h3>Advent of Code - Study everyday </h3>
+                </div>
+                <div class="timer">
+                    <div class="time">25:00 </div>
+                    <div class="button" id="play">
+                        <img id="play-button" src="/assets/img/icons/play-button.png" alt="" srcset="">
+                    </div>
+                    <div class="button" id="stop">
+                        <img src="/assets/img/icons/stop-button.png" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="clock">
+                    <div class="time"> <span class="time-stamp"></span> <span class="meridian"></span></div>
+                </div>
+
+            </div>
+            <div class="task-container col-5">
+                <div class="tab-section">
+                    <div class="tab">
+                        <div class="header-tab">
+                            <div class="title">
+                                Today
+                            </div>
+                            <div class="empty-task-container">
+                                <div class="empty-task">
+                                    <button>
+                                        <img src="/assets/img/icons/refresh.png" alt="" srcset="">           
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="show-tab">
+                                <button>
+                                    <img src="/assets/img/icons/right-arrow.png" alt="" srcset="">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="todo-container">
+                            <ul id="listContainer">
+                            </ul>
+                        </div>
+                        <div class="todo-form">
+                            <div class="add-form"> 
+                                <input type="text" placeholder="+  New task" id="taskform">
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pomodoro-settings" class="modal">
+            <div class="form-container modal-window">
+                <div class="head-section">
+                    <div id="closeModal">
+                        &#x2715;
+                    </div>
+                    <div class="wrapper">
+                        <h2>Pomodoro Settings</h2>
+                        <div class="description">Timer settings</div>
+                        <form action="">
+                            <div class="form-group">
+                                <div class="title-form">
+                                    Time (minutes)
+                                </div>
+                                <div class="row">
+                                    <div class="form-section col-3">
+                                        <label for="">Pomodoro</label>
+                                        <div class="input-container">
+                                            <input type="number" id="pomodoroInput" min="1" value="25">
+                                        </div>
+                                    </div>
+                                    <div class="form-section col-3">
+                                        <label for="">Short break</label>
+                                        <div class="input-container">
+                                            <input id="breakTimeInput" type="number" min="1" value="5">
+                                        </div>
+                                    </div>
+                                    <div class="form-section col-3">
+                                        <label for="">Long break</label>
+                                        <div class="input-container">
+                                            <input type="number" min="0" value="15">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="title-form">
+                                    Configuration
+                                </div>
+                                <div class="row">
+                                    <div class="form-section col-3">
+                                        <label for="">Alarm sound</label>
+                                        <div class="input-container">
+                                            <select id="sounds" name="sounds">
+                                                <option value="beep">Beep</option>
+                                                <option value="classical">classical</option>
+                                            </select>                                        </div>
+                                        </div>
+                                    <div class="form-section col-3">
+                                        <label for="">Long break interval</label>
+                                        <div class="input-container">
+                                            <input type="number" min="0" value="5">
+                                        </div>
+                                    </div>
+                                    <div class="form-section col-3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="form-section col-3">
+                                        <label for="">Autostart session</label>
+                                        <div class="input-container">
+                                            <label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>                                                                                  
+                                        </div>
+                                    </div>
+                                    <div class="form-section col-3">
+                                        <label for="">Autostart break</label>
+                                        <div class="input-container">
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>                                               </div>
+                                    </div>
+                                    <div class="form-section col-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="confirm-modal" class="">
+            <div class="modal-window confirm-section">
+                <div class="header-sec">
+                    <h1>Are you sure you want to archive all taks?</h1>
+                    <div class="close">
+                        &#x2715;
+                    </div>
+                </div>
+                <p>These items will be hidden from your "Today" list</p>
+                <div class="button-section">
+                    <button class="cancel">Cancel</button>
+                    <button class="confirm">Confirm</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="habits-calendar">
+            <div id="calendar">
+                <div class="calendar-section">
+                    <div class="title">Today</div>
+                    <div class="days">
+                        <div day-id="1" class="day active">1</div>
+                        <div day-id="2" class="day">2</div>
+                        <div day-id="3" class="day">1</div>
+                        <div day-id="4" class="day">1</div>
+                        <div day-id="5" class="day">1</div>
+                        <div day-id="6" class="day">1</div>
+                        <div day-id="7" class="day">1</div>
+                        <div day-id="8" class="day">1</div>
+                        <div day-id="9" class="day">1</div>
+                        <div day-id="10" class="day">10</div>
+                        <div day-id="11" class="day">11</div>
+                    </div>
+                </div>
+                <div class="goal-sectio">
+                    <div class="title">Goals</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <audio id="pressSound" src="/assets/audio/button-press.wav"></audio>
+    <audio id="bellSound" src="/assets/audio/bell.wav"></audio>
+
+    <script src="node_modules/sortablejs/Sortable.js"></script>
+<script>
+    
+    let sessionValue = 25,
+        breakValue = 60*5,
+        sessions = 0,
+        accumulatedTime = 0;
+    
+    /*
+    *   Tab section
+    */
+
+    const tab = document.querySelector('.tab');
+    const showBtn = document.querySelector('.show-tab');
+    const tabTitle = document.querySelector('.header-tab .title');
+    const emptyTaskBtn = document.querySelector('.empty-task');
+    const confirmModal = document.querySelector('#confirm-modal');
+    const confirmBtn = document.querySelector('#confirm-modal .confirm');
+    
+    showBtn.addEventListener('click', () => {
+        tab.classList.toggle('active');
+    });
+
+    tabTitle.addEventListener('click', () => {
+        tab.classList.toggle('active');
+    });
+
+    emptyTaskBtn.addEventListener('click', () => {
+        confirmModal.classList.toggle('active');
+    });
+
+    confirmBtn.addEventListener('click', () => {
+        cleanTaskList()
+        renderList()
+        confirmModal.classList.remove('active');
+        changeStateEmptyBtn();
+    });
+
+    /*
+        Modal
+    */
+
+    const modal = document.getElementById('pomodoro-settings')
+    const menu = document.querySelector('.menu')
+    const menuBtn = document.getElementById('menuBtn')
+    const closeBtn = document.getElementById('closeModal')
+    const configBtn = document.getElementById('pomodoro-config')
+    const pomodoroInput = document.getElementById('pomodoroInput')
+    const breakTimeInput = document.getElementById('breakTimeInput')
+    const cancelConfirmBtn = document.querySelector('#confirm-modal .cancel')
+    const closeConfirmlBtn = document.querySelector('#confirm-modal .close')
+
+    const pressSound = document.getElementById('pressSound')
+    const bellSound = document.getElementById('bellSound')
+    
+
+    sessionValue = pomodoroInput.value * 60
+
+    let sessionTime = sessionValue,
+        breakTime = breakValue,
+        active = false,
+        interval = '',
+        runningTime = 0,
+        isBreak = false
+
+    pomodoroInput.addEventListener('change', ()=>{
+        sessionValue = pomodoroInput.value * 60
+        initialize()
+    })
+
+    breakTimeInput.addEventListener('change', ()=>{
+        breakTime = breakTimeInput.value * 60
+    })
+
+    closeBtn.onclick = ()=>{
+        modal.classList.toggle('active')
+    }
+
+    configBtn.onclick = ()=>{
+        modal.classList.toggle('active')
+    }
+
+    menuBtn.onclick = ()=>{
+        menu.classList.toggle('active')
+    }
+
+    document.addEventListener('click', (event)=>{
+        if(event.target.closest('#menuBtn') || event.target.closest('.menu')){
+            console.log('menu')
+            //menu.classList.remove('active')
+        }
+
+        if(!event.target.closest('#menuBtn') && !event.target.closest('.menu')){
+            menu.classList.remove('active')
+        } 
+    })
+
+    cancelConfirmBtn.addEventListener('click', ()=>{
+        confirmModal.classList.remove('active')
+    })
+
+    closeConfirmlBtn.addEventListener('click', ()=>{
+        confirmModal.classList.remove('active')
+    })
+
+    modal.addEventListener('click', (event)=>{
+        console.log(event.target)
+        if(event.target == modal){
+            modal.classList.remove('active')
+        }
+    })
+
+    confirmModal.addEventListener('click', (event)=>{
+        if(event.target == confirmModal){
+            confirmModal.classList.remove('active')
+        }
+    })
+
+
+    const timer = document.querySelector('.timer .time')
+    const clock = document.querySelector('.clock .time')
+    const play = document.querySelector('#play')
+    const stop = document.querySelector('#stop')
+
+    const tittle = document.querySelector('title')
+
+    const playBtnIcon = document.getElementById('play-button')
+
+    let startTime = 0
+    let currentTime = 0
+
+    play.onclick = ()=>{
+        pressSound.play();
+        active = !active
+        if(active){
+            start();
+            playBtnIcon.src = '/assets/img/icons/pause.png'
+        } else{
+            pause();
+            playBtnIcon.src = '/assets/img/icons/play-button.png'
+        }
+    }
+
+    stop.onclick = ()=>{
+        if(active){
+            reset();
+            timer.textContent = calculateTime(sessionValue)
+        }
+    }
+
+    const initialize = ()=>{
+        sessionTime = sessionValue
+        const time = sessionTime == 0 ? 25*60 : sessionTime
+        timer.innerText = calculateTime(time)
+    }
+
+
+    const start = ()=>{
+        console.log('Click')
+        let currentTimerStart = Date.now();
+        interval = setInterval(()=>{
+            let time = (Date.now() - currentTimerStart);
+            time = Math.floor(time / 1000)
+            currentTime =  sessionTime - time
+            accumulatedTime++
+            timer.textContent = calculateTime(currentTime)
+            tittle.textContent = calculateTime(currentTime)
+            if(currentTime<=0 && !isBreak){
+                bellSound.play();
+                currentTimerStart = Date.now()+10;
+                setBreak()
+            }else if(currentTime <= 0 ){
+                bellSound.play();
+                reset()
+                sessions++
+                updateSessions()
+                updateAccumulatedTime()
+            }
+        },1000)
+    }
+
+    const pause = ()=>{
+        clearInterval(interval)
+        sessionTime = currentTime
+    }
+
+    const setBreak = ()=>{
+        isBreak = true
+        sessionTime = breakTime
+        runningTime = 0
+    }
+
+    const reset = ()=>{
+        pause()
+        isBreak = false
+        console.log('Finish')
+        runningTime = 0
+        sessionTime = sessionValue
+        active = false
+    }
+
+    const updateSessions = ()=>{
+        const sessionsLabel = document.getElementById('sessions')
+        sessionsLabel.textContent = sessions
+    }
+
+    const updateAccumulatedTime = ()=>{ 
+        document.getElementById('accumulatedTime')
+                .innerText = calculateTimeByMinutes(accumulatedTime)
+    }
+
+    const calculateTime = value => {
+        if(value < 0)
+            return '00:00'
+
+        const sec = parseInt(value, 10); 
+        let hours = Math.floor(sec / 3600); 
+        let minutes = Math.floor((sec - hours * 3600) / 60); 
+        let seconds = sec - hours * 3600 - minutes * 60;
+        if (hours < 10) {      hours = '0' + hours;    }
+        if ( (hours * 60) + minutes < 10 ) { minutes = `0${minutes}`}
+        if (seconds < 10) {      seconds = '0' + seconds;    }
+        if (hours == 0) {
+            return minutes + ':' + seconds; // Return in MM:SS format
+        } else {
+            return  ( (hours * 60) + minutes) + ':' + seconds; // Return in HH:MM:SS format
+        }
+    }
+
+    const calculateTimeByMinutes = (seconds)=>{
+        if(seconds < 60){
+            return '0:00'
+        }
+        let hours = Math.floor(seconds / 3600);
+        let minutes = Math.floor((seconds - hours * 3600) / 60);
+        minutes = minutes < 10 ? '0' + minutes : minutes
+
+        return `${hours}:${minutes}`
+    }
+    
+    console.log( calculateTime(0) )
+    
+    /*
+        Execution flow
+    */
+
+    initialize();
+
+    
+    /*
+        Create a Clock
+    */
+
+    setInterval(()=>{
+        const today = new Date(); 
+        let hours = today.getHours()
+        let medridian = ''
+        let minutes = today.getMinutes() < 10 ? `0${today.getMinutes()}` : today.getMinutes()
+        
+        if(hours > 12){
+            hours = hours - 12
+            meridian = 'PM'
+        }else{
+            hours = hours < 10 ? `0${hours}` : hours
+            meridian = 'AM'
+        }   
+        clock.textContent = `${hours}:${minutes} ${meridian}`
+    },1000)
+
+    /*
+        To-do App
+    */
+
+    let taskList = [{}];
+
+    const taskform = document.querySelector('#taskform')
+    const totalTasks = document.querySelector('#totalTasks')
+    const listContainer = document.querySelector('#listContainer')
+    const completedTasks = document.querySelector('#completedTasks')
+    const currentTaskElement = document.querySelector('.current-task h3') 
+    let currentTask = {};
+
+    const createTask = (task)=>{
+        const id = task.id;
+        const newTask = document.createElement('li')
+        const text = document.createElement('input')
+        const circle = document.createElement('span')
+        const checkImg = document.createElement('img')
+        const editMenu = document.createElement('div')
+        const editBtn = document.createElement('button')
+
+        newTask.classList.add('task')
+        if(task.status){
+            newTask.classList.add('selected')
+        }
+        newTask.setAttribute('data-id',id)
+        circle.classList.add('select-circle')
+        checkImg.src = './assets/img/icons/check-mini.png'
+        circle.appendChild(checkImg)
+        text.classList.add('title-task')
+        text.value = task.value;
+        text.readOnly = true;
+        text.setAttribute('data-input-id', id)
+        circle.id = id;
+        editBtn.classList.add('edit-btn')
+        editBtn.innerHTML = `<img src="/assets/img/icons/threedots.svg" />`
+        //editMenu.setAttribute('data-id',id)
+        editMenu.classList.add('edit-menu')
+        editMenu.innerHTML = `<ul><li onclick="setCurrentTask(${id})">Asign ⏱ </li><li onclick="editElement(${id})">Edit</li><li onclick="deleteCurrentTask(${id})">Delete</li></ul>`
+
+        circle.addEventListener('click', (event)=>{
+            const task = taskList.find(task => task.id === id)
+            task.status = !task.status
+            newTask.classList.toggle('selected')
+            changeStatus(id)
+            console.log(taskList)
+            updateCompleteTasks();
+            updateLocalStorageTasks();
+
+        })
+        
+        document.addEventListener('click', (event)=>{
+            if(!event.target.closest('.edit-btn')){
+                editMenu.classList.remove('show')
+            }
+        })
+
+        editBtn.addEventListener('click', (event)=>{
+            document.querySelectorAll('.edit-menu').forEach(menu => {
+                menu.classList.remove('show')
+            })
+            editMenu.classList.toggle('show')
+        })
+
+        text.addEventListener('dblclick', (event)=>{
+            text.readOnly = false;
+            text.focus();
+        })
+
+        text.addEventListener('keyup', (event)=>{
+            if(event.keyCode === 13){
+                text.readOnly = true;
+                updateTask({id,value:text.value})
+                updateLocalStorageTasks()
+            }
+        })
+
+        text.addEventListener('blur', (event)=>{
+            text.readOnly = true;
+            if(text.value.trim() === ''){
+                const task = taskList.find(task => task.id === id)
+                text.value = task.value;
+            }
+        })
+
+        newTask.appendChild(circle)
+        newTask.appendChild(text)
+        newTask.appendChild(editBtn)
+        newTask.appendChild(editMenu)
+        return newTask
+    }
+
+    const setCurrentTask = (id)=>{       
+        const task = taskList.find(task => task.id == id)
+        console.log(task)
+        currentTaskElement.textContent = task.value    
+    }
+
+    const editElement = (id)=>{
+        const task = taskList.find(task => task.id == id)
+        const text = document.querySelector(`[data-input-id="${id}"]`)
+        updateLocalStorageTasks()
+        text.readOnly = false;
+        text.focus();
+    }
+
+    const deleteCurrentTask = (id)=>{
+        const task = taskList.find(task => task.id == id)
+        taskList = taskList.filter(task => task.id != id)
+        console.log(taskList)
+        //listContainer.removeChild(task.element)
+        renderList()
+        updateLocalStorageTasks()
+    }
+
+    const updateTask = (taskUpdated)=>{
+        taskList.forEach(task => {
+            if(task.id === taskUpdated.id){
+                task.value = taskUpdated.value
+            }
+        })
+        console.log(taskList)
+    }
+
+    //Change the task status
+    const changeStatus = (id)=>{
+        taskList.forEach(task=>{
+            if(task.id === id){
+                task.status = (task.status) ? true : false
+                console.log(id, task.status)
+            }
+        })
+    }
+
+    taskform.addEventListener('keyup', (event)=>{
+        if(event.keyCode === 13){
+            if(event.target.value.trim() === ''){
+                return
+            }
+            const newTask = {
+                id: incrementId(),
+                value: event.target.value,
+                status: false,
+                active: true
+            }
+            taskList.push({
+                id: incrementId(),
+                value: taskform.value,
+                status: false,
+                active: true
+            })
+            const task = createTask(newTask);
+            listContainer.prepend(task)
+
+            event.target.value = ''
+            
+            updateTotalTasks()
+
+            updateLocalStorageTasks()
+            setLocalStorageTasks()
+            changeStateEmptyBtn()
+
+            console.log(taskList)
+        }
+    })
+
+    // Create a method to render the list
+    const renderList = ()=>{
+        //const taskList = document.querySelectorAll('.taskList')
+        taskList.innerHTML = ''
+        listContainer.innerHTML = ''
+        taskList.forEach(taskValue=>{
+            if(taskValue.active){
+                const task = createTask(taskValue)
+                listContainer.appendChild(task)
+            }
+        })
+        updateCompleteTasks()
+        updateTotalTasks()
+    }
+
+    //Auto increment id
+    const incrementId = ()=>{
+        let id = 0
+        taskList.forEach(task=>{
+            if(task.id > id){
+                id = task.id
+            }
+        })
+        return id + 1
+    }
+
+    function updateTotalTasks(){
+        let totalTasksCount = 0;
+        taskList.forEach(task=>{
+            if(task.active){
+                totalTasksCount++
+            }
+        })
+        totalTasks.textContent = totalTasksCount
+    }
+
+    function updateCompleteTasks(){
+        let pending = 0
+        taskList.forEach(task=>{
+            if(task.status && task.active){
+                pending++
+            }
+        })
+        completedTasks.textContent = pending
+    }
+
+    taskList = [{id:1, status:false, value:'Advent of Code - Study everyday'},{status:false, id:2, value:'Task 2'}]
+    
+    //updateLocalStorageTasks()
+    setLocalStorageTasks()
+
+    function reloadLocalStorageTasks(){
+        setLocalStorageTasks()
+        updateLocalStorageTasks()
+    }
+
+    function setLocalStorageTasks (){
+        //taskList = JSON.parse(localStorage.getItem('taskList'))
+
+        if(localStorage.getItem('taskList')){
+            taskList = JSON.parse(localStorage.getItem('taskList'))
+        }
+    }
+
+    function updateLocalStorageTasks(){
+        localStorage.setItem('taskList', JSON.stringify(taskList))
+    }
+
+    function cleanTaskList(){
+        taskList.forEach(task=>{
+            task.active = false
+        })
+        updateCompleteTasks()
+        updateLocalStorageTasks()
+    }
+
+    function changeStateEmptyBtn(){
+        if(listContainer.children.length === 0){
+            emptyTaskBtn.style.display = 'none'
+        }else{
+            emptyTaskBtn.style.display = 'block'
+        }
+    }
+
+    
+    renderList()
+    updateTotalTasks()
+    updateCompleteTasks()
+    changeStateEmptyBtn()
+
+    /*
+        Menu section
+    */
+
+    const tabs = document.querySelectorAll('[data-tab-target]')
+    const tabContents = document.querySelectorAll('[data-tab-content]')
+
+    tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const target = document.querySelector(tab.dataset.tabTarget)
+        tabContents.forEach(tabContent => {
+            tabContent.classList.remove('active')
+        })
+        tabs.forEach(tab => {
+            tab.classList.remove('active')
+        })
+        tab.classList.add('active')
+        target.classList.add('active')
+    })
+    })
+
+    /*
+        Drag and drop
+    */
+
+    var el = document.getElementById('listContainer');
+    
+    new Sortable(el, {
+        animation: 150,
+        ghostClass: 'highlight',
+        //swapClass: 'highlight',
+        onEnd: () =>{
+            console.log('end')
+        },
+        group: 'task-list',
+        store:{
+            get:(sortable)=>{
+                let order = localStorage.getItem('task-list-order')
+                if(order){
+                    return order.split('|')
+                }else{
+                    return []
+                }
+            },
+            set:(order)=>{
+                localStorage.setItem('task-list-order', order.toArray().join('|'))
+            }
+        }
+    }); 
+
+    /*
+        Radio player
+    */
+
+    const songList = [
+        {
+        id: 1,
+        name: 'Song 1',
+        url:'https://dl.dropboxusercontent.com/s/6bwwd55lrnp2aab/chill_2.mp3'
+        },
+        {
+        id: 2,
+        name: 'Song 2',
+        url:'https://dl.dropbox.com/s/t4ppqlzsbpb7lkj/chill_4.mp3'
+        },]
+    
+        /*
+            Create a theme section to change the theme
+        */
+        let currentTheme = null
+
+        if(localStorage.getItem('currentTheme')){
+            currentTheme = JSON.parse(localStorage.getItem('currentTheme'))
+        }
+
+        function setTheme(theme){
+            currentTheme = theme
+            localStorage.setItem('currentTheme', JSON.stringify(theme))
+        }
+
+        const consoleStyle = 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)';
+
+        const themesData = [
+            {
+                id: 1,
+                name: 'default',
+                url:'/assets/img/background/leaves.jpg',
+                thumbnail:'/assets/img/thumbnail/raining-forest.png"',
+                opacity:'0'
+            },
+            {
+                id: 2,
+                name: 'desert 1',
+                url:'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/c1e9763a84c1e3d78db18d778fc9ce1c/photo-1542401886-65d6c61db217.jpg',
+                thumbnail:'/assets/img/thumbnail/desert1.jpeg',
+                opacity:'0.2'
+            },
+            {
+                id: 3,
+                name: 'london 1',
+                thumbnail:'/assets/img/thumbnail/london-underground.png',
+                url:'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/f00809642b4ab890c4430e5426537102/photo-1515165562839-978bbcf18277.jpg',
+                opacity:'0.4'
+            },
+            {
+                id: 4,
+                name: 'tokyo 3',
+                thumbnail:'/assets/img/thumbnail/tokyo3.png',
+                url:'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2398x1600/ac12cc53c8a97c19e9b1aaf4dd34a12f/photo-1533050487297-09b450131914.jpg',
+                opacity:'0.5'
+            },{
+                id: 5,
+                name: 'landscape 1',
+                thumbnail:'https://images.unsplash.com/photo-1638201977889-7cf4026c7960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDZ8MzE3MDk5fHx8fHwyfHwxNjM4NTc2ODE2&ixlib=rb-1.2.1&q=80&w=200',
+                url:'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/922974355e4e4d8b3864ecd8a23933c9/photo-1638201977889-7cf4026c7960.jpg',
+                opacity:'0.2'
+            },{
+                id: 6,
+                name: 'landscape 2',
+                thumbnail:'https://images.unsplash.com/photo-1632301497603-33fb3d7afdd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw3MDY2fDB8MXxjb2xsZWN0aW9ufDE3N3wzMTcwOTl8fHx8fDJ8fDE2Mzg1NzY5OTY&ixlib=rb-1.2.1&q=80&w=200',
+                url:'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/f79950183efa74e5ee05eafe2037a848/photo-1632301497603-33fb3d7afdd1.jpg',
+                opacity:'0.2'
+            },{
+                id: 7,
+                name: 'chill 2 video',
+                is_video: true,
+                thumbnail:'/assets/img/thumbnail/chill1.png',
+                url:'/assets/img/background/chill1.jpg',
+                video_url:'https://dl.dropboxusercontent.com/s/wsbznpjk1xwys2n/mylivewallpapers.com-FIXED-Living-Room-Chill%20%282%29.mp4',
+                opacity:'0.2'
+            },{
+                id: 8,
+                name: 'chill 3 video',
+                is_video: true,
+                thumbnail:'/assets/img/thumbnail/coffeetokyo.png',
+                url:'/assets/img/background/coffeetokyo.jpg',
+                video_url:'https://dl.dropboxusercontent.com/s/ecjsk0pfte53s12/962994658915e2815dfba53a62c6b9bc.mp4',
+                opacity:'0.3'
+            },{
+                id: 9,
+                name: 'chill cafe video',
+                is_video: true,
+                thumbnail:'/assets/img/thumbnail/chillcafe1.png',
+                url:'/assets/img/background/chillcafe1.png',
+                video_url:'https://dl.dropboxusercontent.com/s/20187f7jplg5tur/coffee%20christmas%20chill.mp4',
+                opacity:'0.3'
+            },{
+                id: 10,
+                name: 'chill study video',
+                is_video: true,
+                url:'/assets/img/background/chillgirl.jpeg',
+                thumbnail:'/assets/img/thumbnail/chillgirl.png',
+                video_url:'https://dl.dropboxusercontent.com/s/nvmvycvr0dd7ad6/study%20chill.mp4',
+                opacity:'0.3'
+            }
+            
+        ]
+
+        const staticContainer = document.querySelector('#staticContainer')
+        const liveContainer = document.querySelector('#liveContainer')
+
+
+        const staticWallpapers = themesData.filter(theme => theme.is_video != true)
+        const liveWallpapers = themesData.filter(theme => theme.is_video == true)
+
+        staticContainer.innerHTML = staticWallpapers.map(theme => `
+        <div class="container-card" theme-id-target="${theme.id}"> 
+            <img src="${theme.thumbnail}" alt="" srcset="">
+        </div>`).join('')
+
+        liveContainer.innerHTML = liveWallpapers.map(theme => `
+        <div class="container-card" theme-id-target="${theme.id}"> 
+            <img src="${theme.thumbnail}" alt="" srcset="">
+        </div>`).join('')
+
+        const themeList = document.querySelectorAll('[theme-id-target]')
+
+        function getTheme(id){
+            console.log(id)
+            const theme = themesData.find(theme => theme.id == id)
+            return theme
+        }
+
+        function updateTheme(){
+            const backgroundTag = document.querySelector('.background-img')
+            backgroundTag.innerHTML = `
+                <div class="fadein">
+                    <img src="${currentTheme.url}" />
+                    <div class="gradient-background" style="opacity:${currentTheme.opacity}"></div>
+                </div>
+            `
+            if(currentTheme.is_video){
+                const videoTag = document.querySelector('.background-img')
+                videoTag.innerHTML = `
+                <div class="fadein">
+                    <video poster="${currentTheme.url}" autoplay muted loop>
+                        <source src="${currentTheme.video_url}" type="video/mp4">
+                    </video>
+                    <div class="gradient-background" style="opacity:${currentTheme.opacity}"></div>
+                </div>
+                `
+            }
+
+        }
+
+        console.log(liveWallpapers)
+
+        themeList.forEach(theme => {
+            theme.addEventListener('click', () => {
+                const id = theme.getAttribute('theme-id-target')
+                currentTheme = getTheme(id)
+                setTheme(currentTheme)
+                updateTheme()
+            })
+        })
+
+        const theme = document.querySelector('#theme')
+        const themeListContainer = document.querySelector('#themeListContainer')
+
+        // Implementing theme list local storage
+        console.log(currentTheme)
+        if(currentTheme === null){
+            currentTheme = getTheme(1)
+        }
+
+        updateTheme()
+
+
+        /*
+            Ambient sounds
+        */
+
+        const ambientSounds = [
+            {
+                id: 1,
+                name: 'fireplace',
+                img: '/assets/img/ambient-icons/fireplace.png',
+                url: 'https://dl.dropbox.com/s/tl2uhg2vx4zxbzj/fireplace.mp3'
+            },{
+                id: 2,
+                name: 'rainy',
+                img: '/assets/img/ambient-icons/rainy.png',
+                url: 'https://dl.dropbox.com/s/cteq8rxsfk031mq/rain_forest.mp3'
+            },{
+                id: 3,
+                name: 'wind',
+                img: '/assets/img/ambient-icons/wind.png',
+                url: 'https://dl.dropbox.com/s/9f1nb1ex2oqdwxd/wind.mp3'
+            },{
+                id: 4,
+                name: 'ocean',
+                img: '/assets/img/ambient-icons/wave.png',
+                url: 'https://dl.dropbox.com/s/1rev2zsphf5mo3r/ocean.mp3'
+            },{
+                id: 5,
+                name: 'traffic',
+                img: '/assets/img/ambient-icons/car.png',
+                url: 'https://dl.dropbox.com/s/wrs6oxtdtg87w8p/city_traffic.mp3'
+            },{
+                id: 6,
+                name: 'night',
+                img: '/assets/img/ambient-icons/moon.png',
+                url: 'https://dl.dropbox.com/s/tvhudzjcuxz60a6/Night-sound-effect.mp3'
+            },{
+                id: 7,
+                name: 'leaves',
+                img: '/assets/img/ambient-icons/leaves.png',
+                url: 'https://dl.dropbox.com/s/ryaju9hmx36awl7/leaves.mp3'
+            },{
+                id: 8,
+                name: 'birds',
+                img: '/assets/img/ambient-icons/bird.png',
+                url: 'https://dl.dropbox.com/s/64binnplyn6n2x6/Bird-singing-early-in-the-morning.mp3'
+            },
+        ]
+
+        const soundContainer = document.querySelector('.sound-container')
+
+        const playSound = (url) => {
+            const audio = new Audio(url)
+            audio.play()
+            console.log("check")
+        }
+        
+        const audioList = new Set()
+
+        ambientSounds.forEach(sound => {
+            const soundBtn = document.createElement('div')
+            const defaultVolume = 0.5;
+
+            soundBtn.classList.add('sound-btn')
+            soundBtn.innerHTML = `
+                <img src="${sound.img}" alt="">
+                <div class="title">
+                    ${sound.name}
+                </div>
+                <div class="sound-control">
+                    <input sound-id="${sound.id}" type=range min=0 value="${defaultVolume*100}" max=100 class="range-fader" id="fader" step=1>
+                </div>
+            `
+            const audio = new Audio(sound.url)
+            
+            if(!audioList.has(audio)){
+                audioList.add({'audio': audio, 'btn': soundBtn})
+            }
+
+            soundBtn.addEventListener('click', (event) => {
+                console.log(event.target.id)
+                if(event.target.id!=='fader'){
+                    soundBtn.classList.toggle('active')
+                    if(soundBtn.classList.contains('active')){
+                        audio.play()
+                        audio.loop = true
+                        audio.volume = defaultVolume
+                    }else{
+                        audio.pause()
+                    }
+                }
+
+                document.querySelectorAll('.range-fader').forEach(fader => {
+                    fader.addEventListener('input', () => {
+                        if(sound.id == fader.getAttribute('sound-id')){
+                            audio.volume= fader.value/100
+                            console.log(fader.value)
+                        }
+                    })
+                })
+            })
+
+            soundContainer.appendChild(soundBtn)
+
+        })
+
+        const focusMoodBtn = document.querySelector('#focus-mood')
+        focusMoodBtn.addEventListener('click', ()=>{
+            audioList.forEach(audioBtn => {
+                audioBtn.btn.classList.remove('active')
+                audioBtn.audio.pause()
+            })
+        })
+
+</script>
+
+</body>
+</html>
