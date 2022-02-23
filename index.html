@@ -1002,6 +1002,11 @@
         const staticWallpapers = themesData.filter(theme => theme.is_video != true)
         const liveWallpapers = themesData.filter(theme => theme.is_video == true)
 
+        staticWallpapers.forEach(el=>{
+            console.log('card', el);
+        })
+        
+
         staticContainer.innerHTML = staticWallpapers.map(theme => `
         <div class="container-card" theme-id-target="${theme.id}"> 
             <img src="${theme.thumbnail}" alt="" srcset="">
