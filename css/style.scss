@@ -356,7 +356,8 @@ main{
     .tab{
         border-radius: 8px;
         background-color: rgba(0, 0, 0, 0.5);
-
+        position: absolute;
+        right: 0;
         .header-tab{
             display: flex;
             align-items: center;
