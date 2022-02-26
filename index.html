@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <title>Your task</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="background-img">
@@ -130,7 +132,7 @@
                     <div class="cron-icon">
                         <img src="assets/img/icons/timer.png" alt="">
                     </div>
-                    <h3>Advent of Code - Study everyday </h3>
+                    <h3>Be 1% better every day</h3>
                 </div>
                 <div class="timer">
                     <div class="time">25:00 </div>
@@ -313,6 +315,19 @@
 
     <script src="js/Sortable.min.js"></script>
 <script>
+    /*
+        General settings
+    */
+
+    const globalSettings = {
+        isOpenTask: false,
+        currentTime: 0,
+        date:''
+    }
+
+
+
+
     let sessionValue = 25,
         breakValue = 60*5,
         sessions = 0,
@@ -476,7 +491,7 @@
             currentTime =  sessionTime - time
             accumulatedTime++
             timer.textContent = calculateTime(currentTime)
-            tittle.textContent = calculateTime(currentTime)
+            tittle.textContent = '⏲ ' + calculateTime(currentTime)
             if(currentTime<=0 && !isBreak){
                 bellSound.play();
                 currentTimerStart = Date.now()+10;
